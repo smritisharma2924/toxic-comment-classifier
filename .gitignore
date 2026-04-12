@@ -1,0 +1,57 @@
+# ── Datasets ──────────────────────────────────────────────────────────────────
+# Kaggle CSV/TSV files are large, license-restricted, and must never hit GitHub.
+# You download these locally into ml_pipeline/data/ only when actively training.
+ml_pipeline/data/
+*.csv
+*.tsv
+
+# ── Trained model artifacts ────────────────────────────────────────────────────
+# Sklearn baseline (.pkl) is small enough to commit later if you choose.
+# BiLSTM (.pt) and DistilBERT (folder of files) are far too large for GitHub.
+# Both saved_models/ and app/models/ are ignored — the handoff between them
+# is a deliberate manual step, not an automatic git-tracked one.
+ml_pipeline/saved_models/
+backend_api/app/models/
+
+# ── Virtual environment ────────────────────────────────────────────────────────
+# venv/ contains thousands of installed library files — never commit these.
+# Anyone cloning the repo recreates the environment using requirements.txt.
+backend_api/venv/
+
+# ── Python bytecode ───────────────────────────────────────────────────────────
+# Python auto-generates these compiled cache files when it runs your code.
+# They are machine-specific and meaningless to anyone else cloning the repo.
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+
+# ── Conda environment metadata ────────────────────────────────────────────────
+# If conda writes any local metadata into your project folder, ignore it.
+conda-meta/
+.conda/
+
+# ── Environment variables ──────────────────────────────────────────────────────
+# .env contains real secrets: API keys, database URLs, model paths.
+# .env.example is the safe template version — that one IS committed.
+# Never commit the real .env under any circumstances.
+.env
+
+# ── Database files ─────────────────────────────────────────────────────────────
+# SQLite creates a local .db file when your async logger runs.
+# This is runtime data, not source code — it belongs on the server, not GitHub.
+*.db
+*.sqlite3
+
+# ── Jupyter checkpoints ───────────────────────────────────────────────────────
+# Jupyter auto-saves checkpoint files inside a hidden folder as you work.
+# These are noisy, auto-generated, and not part of your actual notebook work.
+.ipynb_checkpoints/
+
+# ── OS and editor noise ────────────────────────────────────────────────────────
+# macOS creates .DS_Store files silently in every folder you open in Finder.
+# These are invisible filesystem metadata files specific to your machine.
+.DS_Store
+.idea/
+.vscode/
+*.swp
