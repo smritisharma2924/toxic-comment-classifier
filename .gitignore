@@ -55,3 +55,7 @@ conda-meta/
 .idea/
 .vscode/
 *.swp
+
+# ── Exception: track empty models folder ──────────────
+backend_api/app/models/
+!backend_api/app/models/.gitkeep
