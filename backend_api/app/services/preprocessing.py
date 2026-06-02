@@ -1,4 +1,4 @@
-# Canonical text preprocessing module.
+ # Canonical text preprocessing module.
 # This exact cleaning logic must be used during both model training and live API inference to prevent training-serving skew.
 import re
 def to_lowercase(text) :
