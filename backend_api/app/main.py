@@ -9,6 +9,8 @@ from app.db.logger import init_db
 
 from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi.staticfiles import StaticFiles
+
 @asynccontextmanager
 async def lifespan(app : FastAPI) :
     model, tokenizer = load_model()
@@ -28,6 +30,4 @@ app.add_middleware(
 
 app.include_router(router)
 
-@app.get("/")
-def sample() :
-    return {"status" : "ok"}
+app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
