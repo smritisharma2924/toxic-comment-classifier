@@ -7,6 +7,8 @@ from app.state import model_store # model_store = {}
 
 from app.db.logger import init_db
 
+from fastapi.middleware.cors import CORSMiddleware
+
 @asynccontextmanager
 async def lifespan(app : FastAPI) :
     model, tokenizer = load_model()
@@ -16,6 +18,14 @@ async def lifespan(app : FastAPI) :
     yield
 
 app = FastAPI(lifespan = lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(router)
 
 @app.get("/")
